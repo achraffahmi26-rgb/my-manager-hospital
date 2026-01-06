@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord - Système de Gestion Hospitalière</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-hospital"></i> Système de Gestion Hospitalière</h1>
+            <nav class="nav">
+                <a href="index.html" class="nav-link active"><i class="fas fa-tachometer-alt"></i> Tableau de Bord</a>
+                <a href="patients.html" class="nav-link"><i class="fas fa-users"></i> Patients</a>
+                <a href="doctors.html" class="nav-link"><i class="fas fa-user-md"></i> Médecins</a>
+                <a href="appointments.html" class="nav-link"><i class="fas fa-calendar"></i> Rendez-vous</a>
+                <a href="pharmacy.html" class="nav-link"><i class="fas fa-pills"></i> Pharmacie</a>
+                <a href="rooms.html" class="nav-link"><i class="fas fa-bed"></i> Chambres</a>
+                <a href="billing.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Facturation</a>
+            </nav>
+        </header>
+
+        <main class="main">
+            <section class="dashboard">
+                <h2>Tableau de Bord</h2>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon patients">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-patients">0</h3>
+                            <p>Patients Total</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon doctors">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-doctors">0</h3>
+                            <p>Médecins</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon appointments">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="today-appointments">0</h3>
+                            <p>Rendez-vous Aujourd'hui</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon rooms">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="available-rooms">0</h3>
+                            <p>Chambres Disponibles</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon pharmacy">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="low-stock">0</h3>
+                            <p>Médicaments en Rupture</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon billing">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-revenue">0€</h3>
+                            <p>Revenus Totals</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graphiques -->
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h3>Patients par Statut</h3>
+                        <canvas id="patients-status-chart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Revenus Mensuels</h3>
+                        <canvas id="revenue-chart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Répartition des Services</h3>
+                        <canvas id="services-chart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Taux d'Occupation des Chambres</h3>
+                        <canvas id="rooms-occupancy-chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="dashboard-sections">
+                    <div class="dashboard-section">
+                        <h3>Rendez-vous Récents</h3>
+                        <div class="recent-appointments" id="recent-appointments">
+                            <!-- Sera rempli par JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="dashboard-section">
+                        <h3>Patients Récents</h3>
+                        <div class="recent-patients" id="recent-patients">
+                            <!-- Sera rempli par JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>
