@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Chambres - Système Hospitalier</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-hospital"></i> Système de Gestion Hospitalière</h1>
+            <nav class="nav">
+                <a href="index.html" class="nav-link"><i class="fas fa-tachometer-alt"></i> Tableau de Bord</a>
+                <a href="patients.html" class="nav-link"><i class="fas fa-users"></i> Patients</a>
+                <a href="doctors.html" class="nav-link"><i class="fas fa-user-md"></i> Médecins</a>
+                <a href="appointments.html" class="nav-link"><i class="fas fa-calendar"></i> Rendez-vous</a>
+                <a href="pharmacy.html" class="nav-link"><i class="fas fa-pills"></i> Pharmacie</a>
+                <a href="rooms.html" class="nav-link active"><i class="fas fa-bed"></i> Chambres</a>
+                <a href="billing.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Facturation</a>
+            </nav>
+        </header>
+
+        <main class="main">
+            <section class="rooms-section">
+                <h2>Gestion des Chambres et Lits</h2>
+
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="chambres">Chambres</button>
+                    <button class="tab-btn" data-tab="admissions">Admissions</button>
+                </div>
+
+                <!-- Chambres Tab -->
+                <div class="tab-content active" id="chambres">
+                    <div class="form-container">
+                        <h3 id="room-form-title">Ajouter une Chambre</h3>
+                        <form id="room-form">
+                            <input type="hidden" id="room-id">
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="numero-chambre">Numéro de Chambre *</label>
+                                    <input type="text" id="numero-chambre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="etage">Étage *</label>
+                                    <input type="number" id="etage" min="0" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="type-chambre">Type de Chambre *</label>
+                                    <select id="type-chambre" required>
+                                        <option value="">Sélectionner</option>
+                                        <option value="Standard">Standard</option>
+                                        <option value="VIP">VIP</option>
+                                        <option value="Urgence">Urgence</option>
+                                        <option value="Réanimation">Réanimation</option>
+                                        <option value="Maternité">Maternité</option>
+                                        <option value="Pédiatrie">Pédiatrie</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="capacite">Capacité (lits) *</label>
+                                    <input type="number" id="capacite" min="1" max="10" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="prix-par-jour">Prix par Jour (€)</label>
+                                    <input type="number" id="prix-par-jour" min="0" step="0.01">
+                                </div>
+                                <div class="form-group">
+                                    <label for="service">Service *</label>
+                                    <select id="service" required>
+                                        <option value="">Sélectionner</option>
+                                        <option value="Urgences">Urgences</option>
+                                        <option value="Chirurgie">Chirurgie</option>
+                                        <option value="Maternité">Maternité</option>
+                                        <option value="Pédiatrie">Pédiatrie</option>
+                                        <option value="Cardiologie">Cardiologie</option>
+                                        <option value="Neurologie">Neurologie</option>
+                                        <option value="Oncologie">Oncologie</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="equipements">Équipements</label>
+                                <textarea id="equipements" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="statut-chambre">Statut</label>
+                                <select id="statut-chambre">
+                                    <option value="Disponible">Disponible</option>
+                                    <option value="Occupée">Occupée</option>
+                                    <option value="Maintenance">Maintenance</option>
+                                    <option value="Réservée">Réservée</option>
+                                </select>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Enregistrer
+                                </button>
+                                <button type="button" class="btn btn-secondary" id="room-cancel-btn">
+                                    <i class="fas fa-times"></i> Annuler
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="search-container">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="search-rooms" placeholder="Rechercher une chambre...">
+                        </div>
+                        <div class="filter-box">
+                            <label for="filter-status">Filtrer par statut:</label>
+                            <select id="filter-status">
+                                <option value="">Tous</option>
+                                <option value="Disponible">Disponible</option>
+                                <option value="Occupée">Occupée</option>
+                                <option value="Maintenance">Maintenance</option>
+                                <option value="Réservée">Réservée</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Numéro</th>
+                                    <th>Étage</th>
+                                    <th>Type</th>
+                                    <th>Capacité</th>
+                                    <th>Lits Occupés</th>
+                                    <th>Service</th>
+                                    <th>Prix/Jour</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="rooms-table-body">
+                                <!-- Sera rempli par JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Admissions Tab -->
+                <div class="tab-content" id="admissions">
+                    <div class="form-container">
+                        <h3 id="admission-form-title">Ajouter une Admission</h3>
+                        <form id="admission-form">
+                            <input type="hidden" id="admission-id">
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="admission-patient-id">Patient *</label>
+                                    <select id="admission-patient-id" required>
+                                        <option value="">Sélectionner un patient</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="admission-chambre-id">Chambre *</label>
+                                    <select id="admission-chambre-id" required>
+                                        <option value="">Sélectionner une chambre</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="date-admission">Date d'Admission *</label>
+                                    <input type="date" id="date-admission" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="heure-admission">Heure d'Admission *</label>
+                                    <input type="time" id="heure-admission" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="motif-admission">Motif d'Admission *</label>
+                                    <input type="text" id="motif-admission" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="statut-admission">Statut</label>
+                                    <select id="statut-admission">
+                                        <option value="Actif">Actif</option>
+                                        <option value="Transféré">Transféré</option>
+                                        <option value="Sorti">Sorti</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="date-sortie">Date de Sortie</label>
+                                    <input type="date" id="date-sortie">
+                                </div>
+                                <div class="form-group">
+                                    <label for="heure-sortie">Heure de Sortie</label>
+                                    <input type="time" id="heure-sortie">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="notes-admission">Notes</label>
+                                <textarea id="notes-admission" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Enregistrer
+                                </button>
+                                <button type="button" class="btn btn-secondary" id="admission-cancel-btn">
+                                    <i class="fas fa-times"></i> Annuler
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="search-container">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="search-admissions" placeholder="Rechercher une admission...">
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Patient</th>
+                                    <th>Chambre</th>
+                                    <th>Date Admission</th>
+                                    <th>Date Sortie</th>
+                                    <th>Motif</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admissions-table-body">
+                                <!-- Sera rempli par JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/rooms.js"></script>
+</body>
+
+</html>
