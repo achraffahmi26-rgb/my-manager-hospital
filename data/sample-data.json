@@ -1,0 +1,385 @@
+{
+  "patients": [
+    {
+      "id": 1,
+      "nom": "Martin",
+      "prenom": "Sophie",
+      "age": 34,
+      "sexe": "F",
+      "telephone": "0612345678",
+      "email": "sophie.martin@email.com",
+      "adresse": "15 Rue de la Paix, 75001 Paris",
+      "historiqueMedical": "Hypertension légère, allergie aux pénicillines",
+      "dateCreation": "2024-01-10T10:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "nom": "Bernard",
+      "prenom": "Pierre",
+      "age": 45,
+      "sexe": "M",
+      "telephone": "0623456789",
+      "email": "pierre.bernard@email.com",
+      "adresse": "23 Avenue des Champs-Élysées, 75008 Paris",
+      "historiqueMedical": "Diabète de type 2, chirurgie appendicectomie 2018",
+      "dateCreation": "2024-01-11T14:20:00.000Z"
+    },
+    {
+      "id": 3,
+      "nom": "Dubois",
+      "prenom": "Marie",
+      "age": 28,
+      "sexe": "F",
+      "telephone": "0634567890",
+      "email": "marie.dubois@email.com",
+      "adresse": "8 Boulevard Saint-Germain, 75006 Paris",
+      "historiqueMedical": "Asthme allergique, port de lentilles",
+      "dateCreation": "2024-01-12T09:15:00.000Z"
+    },
+    {
+      "id": 4,
+      "nom": "Petit",
+      "prenom": "Jean",
+      "age": 67,
+      "sexe": "M",
+      "telephone": "0645678901",
+      "email": "jean.petit@email.com",
+      "adresse": "42 Rue de Rivoli, 75004 Paris",
+      "historiqueMedical": "Arthrose, hypertension, prothèse hanche 2019",
+      "dateCreation": "2024-01-13T16:45:00.000Z"
+    },
+    {
+      "id": 5,
+      "nom": "Rousseau",
+      "prenom": "Isabelle",
+      "age": 52,
+      "sexe": "F",
+      "telephone": "0656789012",
+      "email": "isabelle.rousseau@email.com",
+      "adresse": "17 Place Vendôme, 75001 Paris",
+      "historiqueMedical": "Migraines chroniques, intolérance au lactose",
+      "dateCreation": "2024-01-14T11:30:00.000Z"
+    }
+  ],
+  "doctors": [
+    {
+      "id": 1,
+      "nom": "Durand",
+      "prenom": "Dr. Michel",
+      "specialite": "Cardiologie",
+      "service": "Cardiologie",
+      "telephone": "0141234567",
+      "email": "m.durand@hopital.fr",
+      "horaires": "Lun-Ven: 8h-18h",
+      "dateCreation": "2024-01-10T08:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "nom": "Lefebvre",
+      "prenom": "Dr. Claire",
+      "specialite": "Pédiatrie",
+      "service": "Pédiatrie",
+      "telephone": "0142345678",
+      "email": "c.lefebvre@hopital.fr",
+      "horaires": "Lun-Ven: 9h-17h",
+      "dateCreation": "2024-01-10T08:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "nom": "Moreau",
+      "prenom": "Dr. Jean-Luc",
+      "specialite": "Neurologie",
+      "service": "Neurologie",
+      "telephone": "0143456789",
+      "email": "jl.moreau@hopital.fr",
+      "horaires": "Lun-Ven: 8h-16h",
+      "dateCreation": "2024-01-10T08:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "nom": "Garnier",
+      "prenom": "Dr. Sophie",
+      "specialite": "Gynécologie",
+      "service": "Maternité",
+      "telephone": "0144567890",
+      "email": "s.garnier@hopital.fr",
+      "horaires": "Lun-Ven: 8h-18h",
+      "dateCreation": "2024-01-10T08:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "nom": "Robert",
+      "prenom": "Dr. Antoine",
+      "specialite": "Urgences",
+      "service": "Urgences",
+      "telephone": "0145678901",
+      "email": "a.robert@hopital.fr",
+      "horaires": "Rotation 24h/24h",
+      "dateCreation": "2024-01-10T08:00:00.000Z"
+    }
+  ],
+  "appointments": [
+    {
+      "id": 1,
+      "patientId": 1,
+      "patientNom": "Martin Sophie",
+      "doctorId": 1,
+      "doctorNom": "Dr. Michel Durand",
+      "date": "2024-01-15T10:00:00.000Z",
+      "statut": "Confirmé",
+      "motif": "Consultation cardiologie de routine",
+      "dateCreation": "2024-01-10T10:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "patientId": 3,
+      "patientNom": "Dubois Marie",
+      "doctorId": 2,
+      "doctorNom": "Dr. Claire Lefebvre",
+      "date": "2024-01-15T14:30:00.000Z",
+      "statut": "Programmé",
+      "motif": "Vaccination enfant",
+      "dateCreation": "2024-01-11T09:20:00.000Z"
+    },
+    {
+      "id": 3,
+      "patientId": 2,
+      "patientNom": "Bernard Pierre",
+      "doctorId": 1,
+      "doctorNom": "Dr. Michel Durand",
+      "date": "2024-01-16T09:00:00.000Z",
+      "statut": "Confirmé",
+      "motif": "Suivi diabète",
+      "dateCreation": "2024-01-12T15:45:00.000Z"
+    },
+    {
+      "id": 4,
+      "patientId": 4,
+      "patientNom": "Petit Jean",
+      "doctorId": 3,
+      "doctorNom": "Dr. Jean-Luc Moreau",
+      "date": "2024-01-16T15:00:00.000Z",
+      "statut": "Programmé",
+      "motif": "Consultation neurologie",
+      "dateCreation": "2024-01-13T11:15:00.000Z"
+    },
+    {
+      "id": 5,
+      "patientId": 5,
+      "patientNom": "Rousseau Isabelle",
+      "doctorId": 4,
+      "doctorNom": "Dr. Sophie Garnier",
+      "date": "2024-01-17T11:30:00.000Z",
+      "statut": "Confirmé",
+      "motif": "Examen gynécologique annuel",
+      "dateCreation": "2024-01-14T08:30:00.000Z"
+    }
+  ],
+  "medicaments": [
+    {
+      "id": 1,
+      "nom": "Paracétamol 500mg",
+      "code": "PARA500",
+      "famille": "Antalgique",
+      "dosage": "500mg",
+      "prix": 2.50,
+      "stockInitial": 1000,
+      "stockActuel": 850,
+      "stockMinimum": 100,
+      "fournisseur": "Laboratoire PharmaPlus",
+      "dateCreation": "2024-01-10T08:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "nom": "Amoxicilline 1g",
+      "code": "AMOX1000",
+      "famille": "Antibiotique",
+      "dosage": "1g",
+      "prix": 8.20,
+      "stockInitial": 500,
+      "stockActuel": 320,
+      "stockMinimum": 50,
+      "fournisseur": "Sanofi-Aventis",
+      "dateCreation": "2024-01-10T08:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "nom": "Ibuprofène 400mg",
+      "code": "IBU400",
+      "famille": "Anti-inflammatoire",
+      "dosage": "400mg",
+      "prix": 3.75,
+      "stockInitial": 750,
+      "stockActuel": 620,
+      "stockMinimum": 80,
+      "fournisseur": "Pfizer France",
+      "dateCreation": "2024-01-10T08:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "nom": "Ventoline 100µg",
+      "code": "VENT100",
+      "famille": "Bronchodilatateur",
+      "dosage": "100µg/dose",
+      "prix": 12.50,
+      "stockInitial": 300,
+      "stockActuel": 180,
+      "stockMinimum": 30,
+      "fournisseur": "GlaxoSmithKline",
+      "dateCreation": "2024-01-10T08:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "nom": "Metformine 850mg",
+      "code": "MET850",
+      "famille": "Antidiabétique",
+      "dosage": "850mg",
+      "prix": 15.30,
+      "stockInitial": 400,
+      "stockActuel": 290,
+      "stockMinimum": 40,
+      "fournisseur": "Merck Sharp & Dohme",
+      "dateCreation": "2024-01-10T08:00:00.000Z"
+    }
+  ],
+  "rooms": [
+    {
+      "id": 1,
+      "numero": "101",
+      "type": "Standard",
+      "service": "Cardiologie",
+      "capacite": 2,
+      "equipements": "Lit médicalisé, table de nuit, armoire, salle de bain privative",
+      "prixParJour": 150.00,
+      "statut": "Disponible",
+      "dateCreation": "2024-01-10T08:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "numero": "102",
+      "type": "VIP",
+      "service": "Cardiologie",
+      "capacite": 1,
+      "equipements": "Lit électrique, TV, réfrigérateur, salon, salle de bain luxe",
+      "prixParJour": 350.00,
+      "statut": "Occupé",
+      "dateCreation": "2024-01-10T08:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "numero": "201",
+      "type": "Standard",
+      "service": "Pédiatrie",
+      "capacite": 3,
+      "equipements": "Lits pédiatriques, jeux, salle de jeux, surveillance parents",
+      "prixParJour": 120.00,
+      "statut": "Disponible",
+      "dateCreation": "2024-01-10T08:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "numero": "301",
+      "type": "Réanimation",
+      "service": "Urgences",
+      "capacite": 1,
+      "equipements": "Respirateur, moniteurs vitaux, pompes perfusion, défibrillateur",
+      "prixParJour": 800.00,
+      "statut": "Occupé",
+      "dateCreation": "2024-01-10T08:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "numero": "401",
+      "type": "Maternité",
+      "service": "Maternité",
+      "capacite": 2,
+      "equipements": "Lit accouchement, bébé couveuse, espace père",
+      "prixParJour": 250.00,
+      "statut": "Disponible",
+      "dateCreation": "2024-01-10T08:00:00.000Z"
+    }
+  ],
+  "invoices": [
+    {
+      "id": 1,
+      "patientId": 1,
+      "patientNom": "Martin Sophie",
+      "date": "2024-01-15T10:00:00.000Z",
+      "services": [
+        {
+          "description": "Consultation cardiologie",
+          "quantite": 1,
+          "prixUnitaire": 80.00,
+          "tva": 20.0,
+          "total": 96.00
+        },
+        {
+          "description": "Électrocardiogramme",
+          "quantite": 1,
+          "prixUnitaire": 45.00,
+          "tva": 20.0,
+          "total": 54.00
+        }
+      ],
+      "sousTotal": 125.00,
+      "tvaTotal": 25.00,
+      "montantTotal": 150.00,
+      "statut": "Payé",
+      "dateCreation": "2024-01-15T10:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "patientId": 2,
+      "patientNom": "Bernard Pierre",
+      "date": "2024-01-14T14:00:00.000Z",
+      "services": [
+        {
+          "description": "Consultation diabète",
+          "quantite": 1,
+          "prixUnitaire": 65.00,
+          "tva": 20.0,
+          "total": 78.00
+        },
+        {
+          "description": "Analyse sanguine complète",
+          "quantite": 1,
+          "prixUnitaire": 35.00,
+          "tva": 20.0,
+          "total": 42.00
+        }
+      ],
+      "sousTotal": 100.00,
+      "tvaTotal": 20.00,
+      "montantTotal": 120.00,
+      "statut": "En attente",
+      "dateCreation": "2024-01-14T14:30:00.000Z"
+    },
+    {
+      "id": 3,
+      "patientId": 3,
+      "patientNom": "Dubois Marie",
+      "date": "2024-01-13T09:00:00.000Z",
+      "services": [
+        {
+          "description": "Consultation pédiatrie",
+          "quantite": 1,
+          "prixUnitaire": 55.00,
+          "tva": 20.0,
+          "total": 66.00
+        },
+        {
+          "description": "Vaccination DTCP",
+          "quantite": 1,
+          "prixUnitaire": 25.00,
+          "tva": 20.0,
+          "total": 30.00
+        }
+      ],
+      "sousTotal": 80.00,
+      "tvaTotal": 16.00,
+      "montantTotal": 96.00,
+      "statut": "Payé",
+      "dateCreation": "2024-01-13T09:15:00.000Z"
+    }
+  ]
+}

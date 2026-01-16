@@ -9,7 +9,7 @@ class StorageManager {
         this.initializeData();
     }
 
-    initializeData() {
+    async initializeData() {
         const defaultData = {
             patients: [],
             doctors: [],
@@ -41,11 +41,82 @@ class StorageManager {
             }
         });
 
-        // Sécuriser counters (fusion au lieu d’écraser)
+        // Sécuriser counters (fusion au lieu d'écraser)
         const counters = this.get('counters') || {};
         this.set('counters', { ...defaultData.counters, ...counters });
 
+        // Charger les données d'exemple seulement si LocalStorage est vide
+        await this.loadSampleDataIfEmpty();
+
         this.addDemoData();
+    }
+
+    async loadSampleDataIfEmpty() {
+        try {
+            // Vérifier si les données existent déjà
+            const existingPatients = this.get('patients') || [];
+            const existingDoctors = this.get('doctors') || [];
+            const existingAppointments = this.get('appointments') || [];
+            const existingMedicaments = this.get('medicaments') || [];
+            const existingRooms = this.get('rooms') || [];
+            const existingInvoices = this.get('invoices') || [];
+
+            // Si aucune donnée n'existe, charger depuis le fichier JSON
+            if (existingPatients.length === 0 && existingDoctors.length === 0) {
+                const response = await fetch('./data/sample-data.json');
+                if (response.ok) {
+                    const sampleData = await response.json();
+
+                    // Charger les données seulement si elles n'existent pas
+                    if (existingPatients.length === 0 && sampleData.patients) {
+                        this.set('patients', sampleData.patients);
+                    }
+                    if (existingDoctors.length === 0 && sampleData.doctors) {
+                        this.set('doctors', sampleData.doctors);
+                    }
+                    if (existingAppointments.length === 0 && sampleData.appointments) {
+                        this.set('appointments', sampleData.appointments);
+                    }
+                    if (existingMedicaments.length === 0 && sampleData.medicaments) {
+                        this.set('medicaments', sampleData.medicaments);
+                    }
+                    if (existingRooms.length === 0 && sampleData.rooms) {
+                        this.set('rooms', sampleData.rooms);
+                    }
+                    if (existingInvoices.length === 0 && sampleData.invoices) {
+                        this.set('invoices', sampleData.invoices);
+                    }
+
+                    // Mettre à jour les compteurs
+                    const counters = this.get('counters') || {};
+                    if (sampleData.patients && sampleData.patients.length > 0) {
+                        counters.patients = Math.max(...sampleData.patients.map(p => p.id)) + 1;
+                    }
+                    if (sampleData.doctors && sampleData.doctors.length > 0) {
+                        counters.doctors = Math.max(...sampleData.doctors.map(d => d.id)) + 1;
+                    }
+                    if (sampleData.appointments && sampleData.appointments.length > 0) {
+                        counters.appointments = Math.max(...sampleData.appointments.map(a => a.id)) + 1;
+                    }
+                    if (sampleData.medicaments && sampleData.medicaments.length > 0) {
+                        counters.medicaments = Math.max(...sampleData.medicaments.map(m => m.id)) + 1;
+                    }
+                    if (sampleData.rooms && sampleData.rooms.length > 0) {
+                        counters.rooms = Math.max(...sampleData.rooms.map(r => r.id)) + 1;
+                    }
+                    if (sampleData.invoices && sampleData.invoices.length > 0) {
+                        counters.invoices = Math.max(...sampleData.invoices.map(i => i.id)) + 1;
+                    }
+                    this.set('counters', counters);
+
+                    console.log('Sample data loaded successfully');
+                } else {
+                    console.warn('Could not load sample data from ./data/sample-data.json');
+                }
+            }
+        } catch (error) {
+            console.error('Error loading sample data:', error);
+        }
     }
 
     addDemoData() {
